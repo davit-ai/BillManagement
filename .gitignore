@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# C extensions
+*.pyd
+
+# FastAPI and project-specific
+/backend/components/__pycache__/
+/backend/components/*.pyc
+
+# Recursive rule (preferred)
+**/__pycache__/
+**/*.pyc

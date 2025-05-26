@@ -16,14 +16,12 @@ def get_db():
     finally:
         db.close()
 
-
 @app.get('/')
 def read_root():
     return {'Hello': 'World'}
 @app.post("/user")
 async def create_user(request: Request, db: Session = Depends(get_db),data:dict=Body(...)):
-    name = data.get("name")
+    username = data.get("name")
     email = data.get("email")
     password = data.get("password")
-    return await user.create_user(name,email,password,request, db)
-
+    return await user.create_user(request, db)
