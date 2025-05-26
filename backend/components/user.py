@@ -1,6 +1,7 @@
 from fastapi import HTTPException, Request
 from model.models import User
 from sqlalchemy.orm import Session
+from utilities.getTimeDate import now
 from utilities.security import hash_password
 
 
@@ -29,7 +30,10 @@ async def create_user(request: Request, db: Session):
             )
         print("Creating new user...")  # Debug print
         new_user = User(
-            username=username, email=email, password=hash_password(password)
+            username=username,
+            email=email,
+            password=hash_password(password),
+            created_at=now(),
         )
         db.add(new_user)
         db.commit()
@@ -40,7 +44,6 @@ async def create_user(request: Request, db: Session):
     except Exception as e:
         print(f"Error creating user: {str(e)}")  # Debug print
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
-
 
 
 # def read_items(db: Session):
