@@ -10,7 +10,7 @@ async def create_user(request: Request, db: Session):
         data = await request.json()
         print("Received data:", data)  # Debug print
 
-        username = data.get("name")
+        username = data.get("username")
         email = data.get("email")
         password = data.get("password")
 

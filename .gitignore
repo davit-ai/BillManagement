@@ -13,3 +13,4 @@ __pycache__/
 # Recursive rule (preferred)
 **/__pycache__/
 **/*.pyc
+backend/__pycache__/main.cpython-312.pyc
