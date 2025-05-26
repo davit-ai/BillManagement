@@ -5,7 +5,7 @@ from utilities.getTimeDate import now
 from utilities.security import hash_password
 
 
-async def create_user(request: Request, db: Session):
+async def register_user(request: Request, db: Session):
     try:
         data = await request.json()
         print("Received data:", data)  # Debug print

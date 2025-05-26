@@ -23,8 +23,8 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.post("/user")
-async def create_user(
+@app.post("/register", status_code=201)
+async def register_user(
     request: Request, db: Session = Depends(get_db), data: dict = Body(...)
 ):
-    return await user.create_user(request, db)
+    return await user.register_user(request, db)
