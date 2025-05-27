@@ -1,6 +1,6 @@
-import sys
 from database.database import Base
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, DateTime, Integer, String
+from utilities.security import verify_password
 
 
 class User(Base):
@@ -14,12 +14,17 @@ class User(Base):
     password = Column(String)
     is_active = Column(Integer, default=1)  # 1 for active, 0 for inactive
 
+    def verify_password(self, plain_password: str) -> bool:
+        return verify_password(plain_password, self.password)
+
+
 class Item(Base):
     __tablename__ = "items"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     description = Column(String)
+
 
 class Transaction(Base):
     __tablename__ = "transactions"
@@ -32,6 +37,7 @@ class Transaction(Base):
     created_at = Column(DateTime)
     updated_at = Column(DateTime)
     status = Column(String)  # e.g., 'pending', 'completed', 'failed'
+
 
 class Enum(Base):
     __tablename__ = "enums"
