@@ -39,7 +39,7 @@ async def register_user(
     request._json = data
     return await user.register_user(request, db)
 
-
+## added jwt authentication
 @app.post("/login")
 async def login_user(
     request: Request, db: Session = Depends(get_db), data: dict = Body(...)
