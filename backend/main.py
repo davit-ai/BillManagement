@@ -30,6 +30,7 @@ def read_root():
 async def register_user(
     request: Request,
     db: Session = Depends(get_db),
+    ## to have form while using swagger
     username: str = Form(...),
     email: str = Form(...),
     password: str = Form(...),
